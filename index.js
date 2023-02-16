@@ -18,6 +18,10 @@ mongoose.connect(uri, () => { console.log("connected") });
 
 // express endpoints
 
+app.get("/", (req, res) => {
+    res.send("anisole");
+})
+
 app.use('/login', LoginRoute)
 
 
