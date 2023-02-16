@@ -4,14 +4,13 @@ const userSchema = require('../models/UserSchema');
 
 
 router.post("/", async (req, res) => {
-    let result = await userSchema.findOne({ "username": req.body.username });
+    let result = await userSchema.findOne({ "username": req.body.username, "password": req.body.password });
+    if (result) { return res.json({ "error": "Invalid Username or Password" }) }
 
 
-    if (req.body.username == result.username && req.body.password == result.password) {
-        res.send(result);
-    } else {
-        return res.json({ "error": "Invalid Username or Password" });
-    }
+
+    res.send(result);
+
 })
 
 module.exports = router
