@@ -23,7 +23,7 @@ router.post("/", async (req, res) => {
 
     // console.log(result.id)
     // console.log(jwt.verify(token, "key").auth);
-    res.send(token);
+    res.send({ "token": token });
 
 })
 
