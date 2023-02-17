@@ -3,9 +3,7 @@ const cors = require('cors');
 const router = express.Router()
 const userSchema = require('../models/UserSchema');
 
-router.use(cors({
-    origin: '*'
-}));
+router.use(cors());
 router.post("/", async (req, res) => {
 
     console.log(req.body);
