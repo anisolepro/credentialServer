@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router()
 const userSchema = require('../models/UserSchema');
-
+const bcrypt = require('bcrypt');
 
 router.post("/", async (req, res) => {
     let user = await userSchema.find({ "username": req.body.username });
@@ -10,9 +10,23 @@ router.post("/", async (req, res) => {
     if (user.length > 0) { return res.json({ "error": "Email already exists" }) }
 
     try {
-        user = await userSchema(req.body);
+        let hash = await bcrypt.hash(req.body.password, 10);
+
+        // console.log(hash);
+
+
+        user = await userSchema({
+            "username": req.body.username,
+            "email": req.body.email,
+            "password": hash
+        });
         user.save();
-        res.send(user);
+        let token = jwt.sign({ "auth": user.id }, 'key');
+
+
+        // console.log(result.id)
+        // console.log(jwt.verify(token, "key").auth);
+        res.send(token);
     }
     catch (err) {
         res.send({ "error": err.message });
