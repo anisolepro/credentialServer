@@ -2,6 +2,8 @@ const express = require('express');
 const router = express.Router()
 const userSchema = require('../models/UserSchema');
 const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
+
 
 router.post("/", async (req, res) => {
     let user = await userSchema.find({ "username": req.body.username });

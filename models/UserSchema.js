@@ -17,9 +17,13 @@ const userSchema = new Schema({
         type: String,
         required: true
     },
-    varification: {
+    verification: {
         type: Boolean,
         default: false
+    },
+    login: {
+        type: Boolean,
+        default: true
     }
 });
 
