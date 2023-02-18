@@ -21,11 +21,11 @@ router.post("/", async (req, res) => {
             "password": hash
         });
         user.save();
-        let token = jwt.sign({ "auth": user.id }, 'key');
+        let token = jwt.sign({ "auth": user.id }, 'secretKey69');
 
 
         // console.log(result.id)
-        // console.log(jwt.verify(token, "key").auth);
+        // console.log(jwt.verify(token, "secretKey69").auth);
         res.send(token);
     }
     catch (err) {

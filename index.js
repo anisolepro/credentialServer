@@ -3,6 +3,7 @@ const express = require("express");
 const cors = require("cors");
 const LoginRoute = require('./routes/LoginRoute')
 const SignUpRoute = require('./routes/SignUpRoute')
+const AuthToken = require('./routes/AuthToken')
 
 const app = express()
 const port = 6969;
@@ -32,6 +33,7 @@ app.use('/login', LoginRoute)
 
 
 app.use('/signup', SignUpRoute)
+app.use('/auth', AuthToken)
 
 
 // listening port
