@@ -28,7 +28,7 @@ router.post("/", async (req, res) => {
 
         // console.log(result.id)
         // console.log(jwt.verify(token, "secretKey69").auth);
-        res.send(token);
+        res.send({ token });
     }
     catch (err) {
         res.send({ "error": err.message });
