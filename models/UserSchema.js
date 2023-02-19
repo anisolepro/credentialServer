@@ -17,6 +17,10 @@ const userSchema = new Schema({
         type: String,
         required: true
     },
+    profilePicType: {
+        type: String,
+        required: true
+    },
     verification: {
         type: Boolean,
         default: false
